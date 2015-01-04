@@ -7,4 +7,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^test/', 'homePage.views.index'),
+    url(r'^getCoinbasePrice/', 'getCoinbasePrice.views.index'),
+    url(r'^getBitfinexPrice/', 'getBitfinexPrice.views.index'),
 )
