@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bitcoin_notifier_web',
+    'registerJSON',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +50,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
 ROOT_URLCONF = 'bitcoin_notifier_web.urls'
 
 WSGI_APPLICATION = 'bitcoin_notifier_web.wsgi.application'
@@ -56,10 +60,19 @@ WSGI_APPLICATION = 'bitcoin_notifier_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'root',
+        'PASSWORD': '!!@@##$$',
     }
 }
 
