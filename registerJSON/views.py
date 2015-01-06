@@ -4,12 +4,14 @@ from registerJSON.models import Person
 from django.http import HttpResponse
 
 def index(request):
+    emailPost = request.POST.get("email", "")
+    phonePost = request.POST.get("phone")
+    passwordPost = request.POST.get("password", "")
     try:
-        checkOld = Person.objects.get(email='test@test.com')
+        checkOld = Person.objects.get(email=emailPost)
         return HttpResponse('email already exists')
     except Person.DoesNotExist:
-        test = Person.objects.create(email='test@test.com', password='test')    
-        test.email = 'test@test.com'
-        test.password = 'hashed pass'
-        test.save()
-        return HttpResponse('finished testing')
+        userToAdd = Person.objects.create(email=emailPost, password=passwordPost)    
+        userToAdd.phone = phonePost
+        userToAdd.save()
+        return HttpResponse('success')
