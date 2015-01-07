@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<html>
+<script type="text/javascript">
+function checkIfLoggedIn(){
+    var csrftoken = getCookie('csrftoken');
+    var xmlhttp;
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+    } else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            var jsonData = JSON.parse(xmlhttp.responseText);
+            if(jsonData["success"] != "1"){
+                // this means a user is logged in
+                window.location.replace("/");
+            } 
+        }
+    }
+    xmlhttp.open("POST","/checkLoginJSON/",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
+    xmlhttp.send();
+}
+function register(){
+    if(document.getElementById("password").value == document.getElementById("confirmPassword").value){
+        var csrftoken = getCookie('csrftoken');
+        var xmlhttp;
+        if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+        } else {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                var jsonData = JSON.parse(xmlhttp.responseText);
+                if(jsonData["success"] == "1"){
+                    // this means the user has been registered
+                    window.location.replace("/");
+                } else if(jsonData["success"] == "-1"){
+                    alert("That username is already in our system!");
+                } else if(jsonData["success"] == "-2"){
+                    alert("That email is already in our system!");
+                } else if(jsonData["success"] == "-3"){
+                    alert("That username and email are already in our system!");
+                } else {
+                    alert("This is embarrassing for us, something went wrong. Please try again later.");
+                }
+            }
+        }
+        xmlhttp.open("POST","/registerJSON/",true);
+        var params = "email="+ document.getElementById("email").value +"&username=" + document.getElementById("username").value + "&password=" + document.getElementById("password").value + "&address=" + document.getElementById("address").value + "&firstName=" + document.getElementById("firstName").value + "&lastName=" + document.getElementById("lastName").value;
+        console.log(params);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
+        xmlhttp.send(params);
+    } else {
+        alert("The passwords that you entered do not match!");
+    }
+}
+</script>
+
+<div id="showRegister"></div>
+<div id="showLogin"></div>
+<div id="showLogout"></div>
+
+<h1><a class="title">Bitcoin Notify</a></h1>
+
+<p>Register</p>
+<form action="javascript:register();">
+<label class="cred">Email: </label><input type="text" id="email" ><br>
+<label class="cred">Password: </label><input type="password" id="password"><br>
+<label class="cred">Confirm Password: </label><input type="password" id="confirmPassword"><br>
+<input type="submit" value="Submit">
+</form>
+<br>
+
+<div id="showDescription"></div>
+<div id="showWelcomeMessage"></div>
+
+</body>
+</html>

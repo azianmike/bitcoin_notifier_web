@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^getCoinbasePrice/', 'getCoinbasePrice.views.index'),
     url(r'^getBitfinexPrice/', 'getBitfinexPrice.views.index'),
     url(r'^registerJSON/', 'registerJSON.views.index'),
+    url(r'^loginJSON/', 'loginJSON.views.index'),
 )
