@@ -41,7 +41,7 @@ function checkIfLoggedIn(){
     xmlhttp.send();
 }
 
-function postToUrl(url, params){
+function postToUrl(url, params, callbackFunction){
 
     var csrftoken = getCookie('csrftoken');
     var xmlhttp;
@@ -51,19 +51,15 @@ function postToUrl(url, params){
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-            var jsonData = JSON.parse(xmlhttp.responseText);
-            if(jsonData["success"] == "1"){
-                // this means the user has been registered
-                alert("Success!");
-                window.location.replace("/");
-            } else if(jsonData["success"] == "0"){
-                alert("Error: Email is already registered");
-            } else {
-                alert("Fatal error");
-            } 
-        } 
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                var jsonData = JSON.parse(xmlhttp.responseText)
+                callbackFunction(jsonData);
+            }
     }
+        ;
+
+
+
     xmlhttp.open("POST",url,true);
     var paramsString = ""
     for (var key in params) {
@@ -74,7 +70,6 @@ function postToUrl(url, params){
     {
         paramsString = paramsString.substring(0, paramsString.length - 1)
     }
-    console.log(paramsString)
     //var params = "email="+ document.getElementById("email").value + "&password=" + document.getElementById("password").value;
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
