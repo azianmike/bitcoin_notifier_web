@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/global.js"></script>
+<script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/sha512.js"></script>
+<script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/register.js"></script>
+<script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/login.js"></script>
+<div id="showRegister"></div>
+<div id="showLogin"></div>
+<div id="showLogout"></div>
+
+<h1><a class="title">Bitcoin notify me!</a></h1>
+
+<p>Register</p>
+<form action="javascript:register();">
+<label class="cred">Email: </label><input type="text" id="email" ><br>
+<label class="cred">Password: </label><input type="password" id="password"><br>
+<label class="cred">Confirm Password: </label><input type="password" id="confirmPassword"><br>
+<input type="submit" value="Submit">
+</form>
+<br>
+
+
+<p>Login</p>
+<form action="javascript:login();">
+<label class="cred">Email: </label><input type="text" id="loginEmail" ><br>
+<label class="cred">Password: </label><input type="password" id="loginPassword"><br>
+<input type="submit" value="Submit">
+</form>
+<br>
+
+<div id="showDescription"></div>
+<div id="showWelcomeMessage"></div>
+
+</body>
+</html>
