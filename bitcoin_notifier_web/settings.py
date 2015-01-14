@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'bitcoin_notifier_web',
     'registerJSON',
     'loginJSON',
+    'submitAlertJSON',
 )
 
 MIDDLEWARE_CLASSES = (
