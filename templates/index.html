@@ -22,6 +22,11 @@
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="{% static "assets/css/styles-3.css"%}">
     <link href="{% static "assets/css/main.css"%}" rel="stylesheet"> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/global.js"></script>
+    <script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/sha512.js"></script>
+    <script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/register.js"></script>
+    <script src="http://ec2-54-165-2-70.compute-1.amazonaws.com/static/login.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -75,15 +80,15 @@
         <h2 class="title">Coin<span class="highlight">Sniff</span></h2>
         <p class="intro">Price alert notifications for bitcoin</p>
         <div class="btns">
-            <form class="navbar-form ">
+            <form class="navbar-form " action="javascript:register();">
                 <!-- <div class="form-group"> -->
-                <input type="text" class="form-control" name="username" placeholder="Email">
+                <input type="text" class="form-control" name="email" placeholder="Email" id="email">
                 <br>
                 <br>
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" id="password">
                 <br>
                 <br>
-                <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
                 <br>
                 <br>
                 <!-- </div> -->
