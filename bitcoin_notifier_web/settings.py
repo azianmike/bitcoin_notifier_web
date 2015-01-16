@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'registerJSON',
     'loginJSON',
     'submitAlertJSON',
+    'freeOrPaid',
 )
 
 MIDDLEWARE_CLASSES = (
