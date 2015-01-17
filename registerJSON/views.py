@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from registerJSON.models import Person
 from json import dumps
+import datetime
 # Create your views here.
 from django.http import HttpResponse
 
@@ -14,7 +15,10 @@ def index(request):
         returnDict['success']=0
         return HttpResponse(dumps(returnDict))
     except Person.DoesNotExist:
-        userToAdd = Person.objects.create(email=emailPost, password=passwordPost)    
+        f='%Y-%m-%d'
+        now = datetime.datetime.now()
+        mysqlTime = now.strftime(f)
+        userToAdd = Person.objects.create(email=emailPost, password=passwordPost,joinDate=mysqlTime)    
         userToAdd.phone = phonePost
         userToAdd.save()
         returnDict['success']=1

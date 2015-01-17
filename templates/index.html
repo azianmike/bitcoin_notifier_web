@@ -40,7 +40,7 @@
 
   <!-- ******HEADER****** --> 
   <header id="header" class="header">  
-    <div class="container">            
+        <div class="container">            
         <h1 class="logo pull-left">
             <a class="scrollto" href="#promo">
                 <span class="logo-title">CoinSniff</span>
@@ -48,14 +48,14 @@
         </h1><!--//logo-->              
         <nav id="main-nav" class="main-nav navbar-right" role="navigation">
             <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="true">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button><!--//nav-toggle-->
             </div><!--//navbar-header-->            
-            <div class="navbar-collapse collapse" id="navbar-collapse">
+            <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="true">
                 <ul class="nav navbar-nav">
                     <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
                     <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
@@ -72,6 +72,7 @@
             </div><!--//navabr-collapse-->
         </nav><!--//main-nav-->
     </div>
+    
 </header><!--//header-->
 
 <!-- ******PROMO****** -->
@@ -270,7 +271,12 @@
 </footer><!--//footer-->
 
 <!-- Javascript -->          
-
+<script type="text/javascript" src="{% static "assets/plugins/jquery-1.11.1.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/jquery-migrate-1.2.1.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/jquery.easing.1.3.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/js/main.js"%}"></script>
 </body>
 </html> 
 
