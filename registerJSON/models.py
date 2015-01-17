@@ -8,3 +8,5 @@ class Person(models.Model):
     #accountType = models.ForeignKey('freeOrPaid.Pricing', null=True)
     accountType = models.CharField(max_length=50, default="free")    
     joinDate = models.DateField(blank=True, null=True)    
+    activateCode = models.CharField(max_length=256, null=True)
+    activated = models.BooleanField(default=False)
