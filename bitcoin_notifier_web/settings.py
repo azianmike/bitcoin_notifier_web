@@ -102,3 +102,6 @@ STATIC_ROOT = '/var/www/antiebay/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+CSRF_COOKIE_DOMAIN=".coinsniff.com"
+SESSION_COOKIE_DOMAIN=".coinsniff.com"

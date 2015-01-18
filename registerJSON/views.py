@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from registerJSON.models import Person
+from django.template.defaulttags import csrf_token
 from json import dumps
 import datetime
 from hashlib import sha224
