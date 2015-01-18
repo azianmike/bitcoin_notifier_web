@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<script type="text/javascript">
+function checkIfLoggedIn(){
+	var csrftoken = getCookie('csrftoken');
+   	var xmlhttp;
+	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	} else {// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			var jsonData = JSON.parse(xmlhttp.responseText);
+			if(jsonData["success"] != "1"){
+				// this means a user is logged in
+				$('#showWelcomeMessage').html("Welcome back " + jsonData["success"] + "!");
+                                $('#showLogout').html('<p><a class="log" href="/logout/">Logout</a></p>');
+			} else {
+                                $('#showDescription').html('<p id="desc">A market where the seller bids on the lowest price on a product a buyer is interested in!</p>')
+			}
+		}
+	}
+	xmlhttp.open("POST","/checkIfLoggedInJSON/",true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
+	xmlhttp.send();
+}
+</script>
+<body>
+
+<div id="showWelcomeMessage"></div>
+
+<form>
+<input type="text" name="email" placeholder="Email">
+<br>
+<input type="text" name="priceThreshold" placeholder="Price">
+<br>
+<select>
+  <option value="lessThan">Less than (<)</option>
+  <option value="greaterThan">Greater than (>)</option>
+</select>
+<br>
+<input type="checkbox" name="vehicle" value="email">Alert via email<br>
+<input type="checkbox" name="vehicle" value="text">Alert via text 
+<br>
+</form>
+
+<div id="showLogout"></div>
+
+</body>
+</html>
