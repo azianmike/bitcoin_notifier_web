@@ -41,6 +41,7 @@ function submitAlert(){
         paramsJSON['textAlert'] = document.getElementById("textAlert").value;
         paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
         paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
+        paramsJSON['exchange'] = document.getElementById("exchange").value;
         console.log(paramsJSON)
         //postToUrl("/loginJSON/", paramsJSON, submitAlertCallback);
 }
