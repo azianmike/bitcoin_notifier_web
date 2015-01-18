@@ -10,7 +10,7 @@ function loginCallback(jsonData){
         if(jsonData["success"] == "1"){
           // this means the user has been registere
           alert("Success!");
-          window.location.replace("/");
+          window.location.replace("/loginHome/");
           } else if(jsonData["success"] == "0"){
             alert("Error: Email does not exist or password is wrong");
           } else {
