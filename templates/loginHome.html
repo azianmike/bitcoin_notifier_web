@@ -4,6 +4,7 @@
 {% load staticfiles %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="{% static "global.js"%}"></script>
+
 <script type="text/javascript">
 function checkIfLoggedIn(){
 	var csrftoken = getCookie('csrftoken');
@@ -30,14 +31,40 @@ function checkIfLoggedIn(){
 	xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
 	xmlhttp.send();
 }
+
+function submitAlert(){
+    console.log("enter login");
+        var paramsJSON = {};
+        paramsJSON['sign'] = document.getElementById("sign").value;
+        paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
+        paramsJSON['emailAlert'] = document.getElementById("emailAlert").value;
+        paramsJSON['textAlert'] = document.getElementById("textAlert").value;
+        paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
+        paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
+        console.log(paramsJSON)
+        //postToUrl("/loginJSON/", paramsJSON, submitAlertCallback);
+}
+
+function submitAlertCallback(jsonData){
+        if(jsonData["success"] == "1"){
+          // this means the user has been registere
+          alert("Success!");
+          window.location.replace("/loginHome/");
+          } else if(jsonData["success"] == "0"){
+            alert("Error: Email does not exist or password is wrong");
+          } else {
+            alert("Fatal error");
+        }
+}
+
 </script>
 <body>
 <body onload="javascript:checkIfLoggedIn()">
 <div id="showWelcomeMessage"></div>
 
-<form>
+<form action="javascript:submitAlert();">
 <p>Alert me when the price of BTC is </p>
-<select>
+<select name="sign">
   <option value="lessThan">Less than (<)</option>
   <option value="greaterThan">Greater than (>)</option>
 </select>
@@ -45,8 +72,8 @@ than
 <input type="text" name="priceThreshold" placeholder="Price">
 <br>
 via
-<input type="checkbox" name="vehicle" value="email">email
-<input type="checkbox" name="vehicle" value="text" disabled="disabled">text 
+<input type="checkbox" name="emailAlert" value="email">email
+<input type="checkbox" name="textAlert" value="text" disabled="disabled">text 
 <br>
 every
 <input type="text" name="timeIntervalNum" placeholder="Time interval">
@@ -55,6 +82,14 @@ every
   <option value="hour">hour(s)</option>
   <option value="minute">minute(s)</option>
 </select>
+on 
+<select name="exchange">
+  <option value="coinbase">coinbase</option>
+  <option value="bitfinex">bitfinex</option>
+  <option value="bitstamp">bitstamp</option>
+</select>
+
+<button type="submit" class="btn btn-default">Sign In</button>
 </form>
 
 <div id="showLogout"></div>
