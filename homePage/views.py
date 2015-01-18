@@ -7,3 +7,7 @@ from django.http import HttpResponse
 @ensure_csrf_cookie
 def index(request):
     return render_to_response('index.html')  
+
+@ensure_csrf_cookie
+def loginHome(request):
+    return render_to_response('loginHome.html')

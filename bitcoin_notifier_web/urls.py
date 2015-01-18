@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^loginJSON/', 'loginJSON.views.index'),
     url(r'^checkIfLoggedInJSON/', 'loginJSON.views.checkIfLoggedIn'),
     url(r'^submitAlertJSON/', 'submitAlertJSON.views.index'),
-    url(r'^home/', 'loginHome.views.index'),
-
+    url(r'^loginHome/', 'homePage.views.loginHome'),
+    url(r'^logout/', 'logout.views.index'),
 
 )

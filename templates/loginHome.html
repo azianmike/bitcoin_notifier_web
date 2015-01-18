@@ -30,12 +30,38 @@ function checkIfLoggedIn(){
 	xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
 	xmlhttp.send();
 }
+
+function submitAlert(){
+    console.log("enter login");
+        var paramsJSON = {};
+        paramsJSON['sign'] = document.getElementById("sign").value;
+        paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
+        paramsJSON['emailAlert'] = document.getElementById("emailAlert").value;
+        paramsJSON['textAlert'] = document.getElementById("textAlert").value;
+        paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
+        paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
+        console.log(paramsJSON)
+        //postToUrl("/loginJSON/", paramsJSON, submitAlertCallback);
+}
+
+function submitAlertCallback(jsonData){
+        if(jsonData["success"] == "1"){
+          // this means the user has been registere
+          alert("Success!");
+          window.location.replace("/loginHome/");
+          } else if(jsonData["success"] == "0"){
+            alert("Error: Email does not exist or password is wrong");
+          } else {
+            alert("Fatal error");
+        }
+}
+
 </script>
 <body>
 <body onload="javascript:checkIfLoggedIn()">
 <div id="showWelcomeMessage"></div>
 
-<form>
+<form action="javascript:login();">
 <p>Alert me when the price of BTC is </p>
 <select>
   <option value="lessThan">Less than (<)</option>
