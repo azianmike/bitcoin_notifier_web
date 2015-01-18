@@ -65,32 +65,32 @@ function submitAlertCallback(jsonData){
 
 <form action="javascript:submitAlert();">
 <p>Alert me when the price of BTC is </p>
-<select name="sign">
+<select name="sign" id="sign">
   <option value="lessThan">Less than (<)</option>
   <option value="greaterThan">Greater than (>)</option>
 </select>
 than
-<input type="text" name="priceThreshold" placeholder="Price">
+<input type="text" name="priceThreshold" placeholder="Price" id="priceThreshold">
 <br>
 via
-<input type="checkbox" name="emailAlert" value="email">email
-<input type="checkbox" name="textAlert" value="text" disabled="disabled">text 
+<input type="checkbox" name="emailAlert" value="email" id="emailAlert">email
+<input type="checkbox" name="textAlert" value="text" disabled="disabled" id="textAlert">text 
 <br>
 every
-<input type="text" name="timeIntervalNum" placeholder="Time interval">
-<select name="timeIntervalUnit">
+<input type="text" name="timeIntervalNum" placeholder="Time interval" id="timeIntervalNum">
+<select name="timeIntervalUnit" id="timeIntervalUnit">
   <option value="day">day(s)</option>
   <option value="hour">hour(s)</option>
   <option value="minute">minute(s)</option>
 </select>
 on 
-<select name="exchange">
+<select name="exchange" id="exchange">
   <option value="coinbase">coinbase</option>
   <option value="bitfinex">bitfinex</option>
   <option value="bitstamp">bitstamp</option>
 </select>
-
-<button type="submit" class="btn btn-default">Sign In</button>
+<br>
+<button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 <div id="showLogout"></div>
