@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+{% load staticfiles %}
+<head>
+    <title>CoinSniff - Bitcoin Price Alert Notifications</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static "assets/plugins/bootstrap/css/bootstrap.min.css"%}">
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="{% static "assets/plugins/font-awesome/css/font-awesome.css"%}">
+    <link rel="stylesheet" href="{% static "assets/plugins/prism/prism.css"%}">
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static "assets/css/styles-3.css"%}">
+    <link href="{% static "assets/css/main.css"%}" rel="stylesheet"> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "global.js"%}"></script>
+    <script src="{% static "sha512.js"%}"></script>
+    <script src="{% static "register.js"%}"></script>
+    <script src="{% static "login.js"%}"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head> 
+
+  <body data-spy="scroll">
+
+
+
+  <!-- ******HEADER****** --> 
+  <header id="header" class="header">  
+        <div class="container">            
+        <h1 class="logo pull-left">
+            <a class="scrollto" href="#promo">
+                <span class="logo-title">CoinSniff</span>
+            </a>
+        </h1><!--//logo-->              
+        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="true">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button><!--//nav-toggle-->
+            </div><!--//navbar-header-->            
+            <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="true">
+                <ul class="nav navbar-nav">
+                    <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
+                    <li class="nav-item"><a class="scrollto" href="#features">Pricing</a></li>      
+                    <li class="nav-item last"><a class="scrollto" href="#contact">Contact</a></li>
+                </ul><!--//nav-->
+                <form class="navbar-form navbar-right" action="javascript:login();">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Email" id="loginEmail">
+                        <input type="password" class="form-control" name="password" placeholder="Password" id="loginPassword">
+                    </div>
+                    <button type="submit" class="btn btn-default">Sign In</button>
+                </form>
+            </div><!--//navabr-collapse-->
+        </nav><!--//main-nav-->
+    </div>
+    
+</header><!--//header-->
+
+<!-- ******PROMO****** -->
+<section id="promo" class="promo section offset-header">
+    <div class="container text-center">
+        <h2 class="title">Coin<span class="highlight">Sniff</span></h2>
+        <p class="intro">Price alert notifications for bitcoin</p>
+        <div class="btns">
+            <form class="navbar-form " action="javascript:register();">
+                <!-- <div class="form-group"> -->
+                <input type="text" class="form-control" name="email" placeholder="Email" id="email">
+                <br>
+                <br>
+                <input type="password" class="form-control" name="password" placeholder="Password" id="password">
+                <br>
+                <br>
+                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+                <br>
+                <br>
+                <!-- </div> -->
+                <button type="submit" class="btn btn-cta-secondary">Register</button>
+            </form>
+        </div>
+        <ul class="meta list-inline">
+
+        </ul><!--//meta-->
+    </div><!--//container-->
+
+</section><!--//promo-->
+
+<!-- ******ABOUT****** --> 
+<section id="about" class="about section">
+    <div class="container">
+        <h2 class="title text-center">What is CoinSniff?</h2>
+        <p class="intro text-center">Get unlimited notifications for bitcoin prices. From various exchanges</p>
+        <div class="row">
+
+            <div class="item col-md-4 col-sm-6 col-xs-12">
+                <div class="icon-holder">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="content">
+                    <h3 class="sub-title">Time saver</h3>
+                    <p>Save time. Stop checking the prices. Get notified of any price changes!</p>
+                </div><!--//content-->
+            </div><!--//item-->
+            <div class="item col-md-4 col-sm-6 col-xs-12">
+                <div class="icon-holder">
+                    <i class="fa fa-crosshairs"></i>
+                </div>
+                <div class="content">
+                    <h3 class="sub-title">Price Target</h3>
+                    <p>Get an alert at an exact price. Customize different prices for different exchanges.</p>
+                </div><!--//content-->
+            </div><!--//item-->           
+            <div class="clearfix visible-md"></div>    
+            <div class="item col-md-4 col-sm-6 col-xs-12">
+                <div class="icon-holder">
+                    <i class="fa fa-tablet"></i>
+                </div>
+                <div class="content">
+                    <h3 class="sub-title">Text or email</h3>
+                    <p>Get notifications via text or email as soon as your price alert is hit.</p>
+                </div><!--//content-->
+            </div><!--//item-->                
+
+        </div><!--//row-->            
+    </div><!--//container-->
+</section><!--//about-->
+
+<!-- ******DOCS****** --> 
+<section id="features" class="features section">
+    <div class="container text-center">
+        <h2 class="title">Pricing</h2>
+
+        <p>&nbsp;</p>
+
+        <div class="row flat">
+            <div class="col-md-4">
+                <ul class="plan plan1">
+                    <li class="plan-name">
+                        Basic
+                    </li>
+                    <li class="plan-price">
+                        <strong>Free</strong>
+                    </li>
+                    <li>
+                        <strong>1</strong> Alert Rule
+                    </li>
+                    <li>
+                        Up to <strong>1</strong> alert per 6 hours
+                    </li>
+                    <li>
+                        <strong>Text</strong> or <strong>Email</strong>
+                    </li>
+                    <li>
+                        <strong>Unlimited</strong> text or email alerts
+                    </li>
+                    <li class="plan-action">
+                        <a href="#" class="btn btn-cta-secondary btn-lg">Signup</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="plan plan2 featured">
+                    <li class="plan-name">
+                        Standard
+                    </li>
+                    <li class="plan-price">
+                        <strong>$3</strong>/month
+                    </li>
+                    <li>
+                        <strong>10</strong> Alert Rule
+                    </li>
+                    <li>
+                        <strong>Unlimited</strong> alerts per 1 minute
+                    </li>
+                    <li>
+                        <strong>Text</strong> or <strong>Email</strong>
+                    </li>
+                    <li>
+                        <strong>Unlimited</strong> text or email alerts
+                    </li>
+                    <li class="plan-action">
+                        <a href="#" class="btn btn-cta-secondary btn-lg">Signup</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="plan plan3">
+                    <li class="plan-name">
+                        Advanced
+                    </li>
+                    <li class="plan-price">
+                        <strong>$5</strong>/month
+                    </li>
+                    <li>
+                        <strong>50</strong> Alert Rule
+                    </li>
+                    <li>
+                        <strong>Unlimited</strong> alerts per 1 minute
+                    </li>
+                    <li>
+                        <strong>Text</strong> or <strong>Email</strong>
+                    </li>
+                    <li>
+                        <strong>Unlimited</strong> text or email alerts
+                    </li>
+                    <li class="plan-action">
+                        <a href="#" class="btn btn-cta-secondary btn-lg">Signup</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div> <!-- /container -->
+</section><!--//features-->
+
+<section id="features" class="features section">
+    <div class="container">
+        <div class="license-inner">
+            <div class="info">
+                <p>An "Alert Rule" is basically a rule, that when true, will send you a text/email alert. For example, you could set an alert for "when the price < $300 on Bitfinex" and when the price is less than $300 (like $299), you will get an email/text alert. </p>
+            </div><!--//info-->
+        </div><!--//license-inner-->
+    </div><!--//container-->
+</section><!--//how-->
+
+<!-- ******CONTACT****** --> 
+<section id="contact" class="license section">
+    <div class="container">
+        <div class="license-inner">
+            <h2 class="title text-center">Contact</h2>
+
+            <div class="cta-container">
+                <div class="speech-bubble">                    
+                    <p class="intro">Feel free to send any questions/comments/concerns to info (at) coinsniff.com </p>
+                    <div class="icon-holder  text-center"><i class="fa fa-smile-o"></i></div>
+                </div><!--//speech-bubble-->                 
+
+                </div><!--//btn-container-->
+            </div><!--//cta-container-->
+        </div><!--//license-inner-->
+    </div><!--//container-->
+</section>
+
+
+<!-- ******FOOTER****** --> 
+<footer class="footer">
+    <div class="container text-center">
+        <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+    </div><!--//container-->
+</footer><!--//footer-->
+
+<!-- Javascript -->          
+<script type="text/javascript" src="{% static "assets/plugins/jquery-1.11.1.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/jquery-migrate-1.2.1.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/jquery.easing.1.3.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"%}"></script>
+<<<<<<< HEAD
+<script type="text/javascript" src="{% static "assets/plugins/prism/prism.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/js/main.js"%}"></script>
+=======
+<script type="text/javascript" src="{% static "assets/js/main.js"%}"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58631799-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+>>>>>>> 18e57ff295bdce49ffeed5cc5a8af66f12994877
+
+</body>
+</html> 
+

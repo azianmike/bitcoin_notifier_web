@@ -1,0 +1,47 @@
+form#rosesearch
+{
+    width:700px;
+}
+
+#rosesearch legend {
+background-color:#7f2e3f;
+width:200px;
+font-size: 20px;
+}
+
+#rosesearch label {
+display:block;
+font-weight:bold;
+text-align:right;
+width:140px;
+font-size:1.1em;
+float:left;
+color:#000000;
+}
+
+#rosesearch input {
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #000000;
+width:244px;
+margin:2px 0 20px 10px;
+color:#000000;
+float:left
+}
+
+#rosesearch div.form-row
+{
+    width:100%;
+    display:block;
+    margin-bottom:2em;
+    overflow:auto;
+    zoom:1;
+}
+
+
+#rosesearch div.form-row div.editor-cell
+{
+    float:left;
+    width:300px;
+    vertical-align:top;
+}
