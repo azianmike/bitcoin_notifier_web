@@ -36,18 +36,25 @@ function checkIfLoggedIn(){
 <div id="showWelcomeMessage"></div>
 
 <form>
-<input type="text" name="email" placeholder="Email">
-<br>
-<input type="text" name="priceThreshold" placeholder="Price">
-<br>
+<p>Alert me when the price of BTC is </p>
 <select>
   <option value="lessThan">Less than (<)</option>
   <option value="greaterThan">Greater than (>)</option>
 </select>
+than
+<input type="text" name="priceThreshold" placeholder="Price">
 <br>
-<input type="checkbox" name="vehicle" value="email">Alert via email<br>
-<input type="checkbox" name="vehicle" value="text">Alert via text 
+via
+<input type="checkbox" name="vehicle" value="email">email
+<input type="checkbox" name="vehicle" value="text" disabled="disabled">text 
 <br>
+every
+<input type="text" name="timeIntervalNum" placeholder="Time interval">
+<select name="timeIntervalUnit">
+  <option value="day">day(s)</option>
+  <option value="hour">hour(s)</option>
+  <option value="minute">minute(s)</option>
+</select>
 </form>
 
 <div id="showLogout"></div>
