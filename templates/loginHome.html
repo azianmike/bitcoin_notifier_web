@@ -37,8 +37,8 @@ function submitAlert(){
         var paramsJSON = {};
         paramsJSON['sign'] = document.getElementById("sign").value;
         paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
-        paramsJSON['emailAlert'] = document.getElementById("emailAlert:checked").value;
-        paramsJSON['textAlert'] = document.getElementById("textAlert:checked").value;
+        paramsJSON['emailAlert'] = document.getElementById(".emailAlert:checked").value;
+        paramsJSON['textAlert'] = document.getElementById(".textAlert:checked").value;
         paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
         paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
         paramsJSON['exchange'] = document.getElementById("exchange").value;
