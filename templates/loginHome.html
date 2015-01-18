@@ -52,7 +52,7 @@ function submitAlertCallback(jsonData){
           alert("Success!");
           window.location.replace("/loginHome/");
           } else if(jsonData["success"] == "0"){
-            alert("Error: Email does not exist or password is wrong");
+            alert("Error: Something went wrong");
           } else {
             alert("Fatal error");
         }
