@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(max_length=256)),
                 ('phone', models.CharField(max_length=256, null=True)),
                 ('accountType', models.CharField(default=b'free', max_length=50)),
+                ('joinDate', models.DateField(null=True, blank=True)),
             ],
             options={
             },
