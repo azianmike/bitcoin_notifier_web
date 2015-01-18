@@ -9,4 +9,7 @@ class Alert(models.Model):
     sign = models.CharField(max_length=20, default="12")
     lastAlert = models.DateField(blank=True, null=True)
     intervalInSeconds = models.IntegerField(default="1000000")
-    emailOrText = models.CharField(max_length=50, default="email")
+    #emailOrText = models.CharField(max_length=50, default="email")
+    emailAlert = models.BooleanField(default=False)
+    textAlert = models.BooleanField(default=False)
+    exchange = models.CharField(max_length=100, default="coinbase")
