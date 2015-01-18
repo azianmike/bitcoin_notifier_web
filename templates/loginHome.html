@@ -53,7 +53,9 @@ function submitAlertCallback(jsonData){
           window.location.replace("/loginHome/");
           } else if(jsonData["success"] == "0"){
             alert("Error: Something went wrong");
-          } else {
+          } else if(jsonData["success"] == "-1"){
+            alert("Error: You are not logged in");
+          }else {
             alert("Fatal error");
         }
 }
