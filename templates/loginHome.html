@@ -42,8 +42,8 @@ function submitAlert(){
         paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
         paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
         paramsJSON['exchange'] = document.getElementById("exchange").value;
-        console.log(paramsJSON)
-        //postToUrl("/loginJSON/", paramsJSON, submitAlertCallback);
+        //console.log(paramsJSON)
+        postToUrl("/submitAlertJSON/", paramsJSON, submitAlertCallback);
 }
 
 function submitAlertCallback(jsonData){
