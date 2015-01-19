@@ -19,7 +19,7 @@ def index(request):
         exchangePost = request.POST.get("exchange")
 
         returnDict = {}
-        personGet = Person.objects.get(email=emailPost)
+        personGet = Person.objects.get(email=emailGet)
         alertToAdd = Alert.objects.create(person=personGet, email=emailGet)
         alertToAdd.priceThreshold=priceThresholdPost
         alertToAdd.sign = signPost
