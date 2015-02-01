@@ -1,8 +1,10 @@
 
 from django.shortcuts import render
 from registerJSON.models import Person
-from submitAlertJSON.models import Alert
+from submitAlertJSON.models import Alert, NumAlertsPerPerson
 from json import dumps
+import time
+from hashlib import sha224
 # Create your views here.
 from django.http import HttpResponse
 
@@ -10,6 +12,12 @@ def index(request):
 
     if request.session.get('has_loggedin',False):
         emailGet = request.session.get('email',False)
+        returnDict = {}
+
+        numAlerts = NumAlertsPerPerson.objects.get(person=emailGet)
+        if numAlerts.numAlerts == numAlerts.maxAlerts:
+            returnDict['success'] = -2
+            return HttpResponse(dumps(returnDict))
         priceThresholdPost = request.POST.get("priceThreshold")
         signPost = request.POST.get("sign")
         emailAlertPost = request.POST.get("emailAlert")
@@ -18,9 +26,10 @@ def index(request):
         timeIntervalUnitPost = request.POST.get("timeIntervalUnit")
         exchangePost = request.POST.get("exchange")
 
-        returnDict = {}
+        
         personGet = Person.objects.get(email=emailGet)
-        alertToAdd = Alert.objects.create(person=personGet, email=emailGet)
+        alertIDTemp = sha224(emailGet+str(int(time.time()))).hexdigest()
+        alertToAdd = Alert.objects.create(person=personGet, email=emailGet, alertID=alertIDTemp)
         alertToAdd.priceThreshold=priceThresholdPost
         alertToAdd.sign = signPost
         alertToAdd.emailAlert = emailAlertPost
@@ -35,6 +44,8 @@ def index(request):
         alertToAdd.intervalInSeconds = intervalInSecondsCalc
         alertToAdd.exchange = exchangePost
         alertToAdd.save()
+        numAlerts.numAlerts += 1
+        numAlerts.save()
         returnDict['success']=1
         return HttpResponse(dumps(returnDict))
     else:

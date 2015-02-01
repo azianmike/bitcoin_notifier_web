@@ -55,7 +55,10 @@ function submitAlertCallback(jsonData){
             alert("Error: Something went wrong");
           } else if(jsonData["success"] == "-1"){
             alert("Error: You are not logged in");
-          }else {
+          } else if(jsonData["success"] == "-2"){
+            alert("You have too many active alerts. Delete some or upgrade");
+          }
+          else {
             alert("Fatal error");
         }
 }
