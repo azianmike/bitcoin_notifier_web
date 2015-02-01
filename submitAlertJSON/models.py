@@ -17,7 +17,7 @@ class Alert(models.Model):
     def updateNextAlert(self):
         import time        
         self.nextAlert = int(time.time()) + self.intervalInSeconds 
-
+        super(Alert, self).save()
 
 class NumAlertsPerPerson(models.Model):
     person = models.ForeignKey('registerJSON.Person', primary_key=True)
