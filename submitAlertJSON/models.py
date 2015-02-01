@@ -14,6 +14,11 @@ class Alert(models.Model):
     textAlert = models.BooleanField(default=False)
     exchange = models.CharField(max_length=100, default="coinbase")
 
+    def updateNextAlert(self):
+        import time        
+        self.nextAlert = int(time.time()) + self.intervalInSeconds 
+
+
 class NumAlertsPerPerson(models.Model):
     person = models.ForeignKey('registerJSON.Person', primary_key=True)
     numAlerts = models.IntegerField(default=0)
