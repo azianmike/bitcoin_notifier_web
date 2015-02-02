@@ -18,8 +18,20 @@ class Alert(models.Model):
         import time        
         self.nextAlert = int(time.time()) + self.intervalInSeconds 
         super(Alert, self).save()
+    
 
 class NumAlertsPerPerson(models.Model):
     person = models.ForeignKey('registerJSON.Person', primary_key=True)
     numAlerts = models.IntegerField(default=0)
     maxAlerts = models.IntegerField(default=1)
+    
+    def decreaseActiveAlerts(self):
+        if self.numAlerts==0:
+            return
+        self.numAlerts -= 1
+    
+    def increaseActiveAlerts(self):
+        if self.numAlerts==self.maxAlerts:
+            return
+        
+        self.numAlerts += 1
