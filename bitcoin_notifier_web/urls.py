@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^loginHome/', 'homePage.views.loginHome'),
     url(r'^logout/', 'logout.views.index'),
     url(r'^cancelAlert/(?P<alertIDTemp>\w{0,100})/$', 'cancelAlert.views.index'),
+    url(r'^getAlertsJSON/(?P<email>.*)/$', 'getAlertsJSON.views.index'),
 )
