@@ -33,6 +33,7 @@ def getAlerts(emailTemp):
         alertTemp['emailAlert'] = alert.emailAlert
         alertTemp['textAlert'] = alert.textAlert
         alertTemp['exchange'] = alert.exchange
+        alertTemp['alertID'] = alert.alertID
         alertList.append(alertTemp)
 
     return alertList
