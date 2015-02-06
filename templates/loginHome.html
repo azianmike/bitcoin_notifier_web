@@ -1,104 +1,174 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 
-{% load staticfiles %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="{% static "global.js"%}"></script>
+<head>
 
-<script type="text/javascript">
-function checkIfLoggedIn(){
-	var csrftoken = getCookie('csrftoken');
-   	var xmlhttp;
-	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-	  xmlhttp=new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function(){
-		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-			var jsonData = JSON.parse(xmlhttp.responseText);
-			if(jsonData["success"] != "1"){
-				// this means a user is logged in
-				$('#showWelcomeMessage').html("Welcome back " + jsonData["success"] + "!");
-                                $('#showLogout').html('<p><a class="log" href="/logout/">Logout</a></p>');
-			} else {
-                                $('#showDescription').html('<p id="desc">A market where the seller bids on the lowest price on a product a buyer is interested in!</p>')
-			}
-		}
-	}
-	xmlhttp.open("POST","/checkIfLoggedInJSON/",true);
-	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
-	xmlhttp.send();
+  <title>CoinSniff - Bitcoin Price Alert Notifications</title>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">    
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="http://coinsniff.com/static/assets/plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Plugins CSS -->    
+  <link rel="stylesheet" href="http://coinsniff.com/static/assets/plugins/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="http://coinsniff.com/static/assets/plugins/prism/prism.css">
+  <!-- Theme CSS -->  
+  <link id="theme-style" rel="stylesheet" href="http://coinsniff.com/static/assets/css/styles-3.css">
+  <link href="http://coinsniff.com/static/assets/css/main.css" rel="stylesheet"> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://coinsniff.com/static/global.js"></script>
+
+  <script type="text/javascript">
+  function checkIfLoggedIn(){
+    var csrftoken = getCookie('csrftoken');
+    var xmlhttp;
+  if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      var jsonData = JSON.parse(xmlhttp.responseText);
+      if(jsonData["success"] != "1"){
+        // this means a user is logged in
+        $('#showWelcomeMessage').html("Welcome back " + jsonData["success"] + "!");
+        $('#showLogout').html('<p><a class="log" href="/logout/">Logout</a></p>');
+      } else {
+        $('#showDescription').html('<p id="desc">A market where the seller bids on the lowest price on a product a buyer is interested in!</p>')
+      }
+    }
+  }
+  xmlhttp.open("POST","/checkIfLoggedInJSON/",true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.setRequestHeader('X-CSRFToken', csrftoken);
+  xmlhttp.send();
 }
 
 function submitAlert(){
-    console.log("enter login");
-        var paramsJSON = {};
-        paramsJSON['sign'] = document.getElementById("sign").value;
-        paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
-        paramsJSON['emailAlert'] = document.getElementById("emailAlert").checked;
-        paramsJSON['textAlert'] = document.getElementById("textAlert").checked;
-        paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
-        paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
-        paramsJSON['exchange'] = document.getElementById("exchange").value;
+  console.log("enter login");
+  var paramsJSON = {};
+  paramsJSON['sign'] = document.getElementById("sign").value;
+  paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
+  paramsJSON['emailAlert'] = document.getElementById("emailAlert").checked;
+  paramsJSON['textAlert'] = document.getElementById("textAlert").checked;
+  paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
+  paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
+  paramsJSON['exchange'] = document.getElementById("exchange").value;
         //console.log(paramsJSON)
         postToUrl("/submitAlertJSON/", paramsJSON, submitAlertCallback);
-}
+      }
 
-function submitAlertCallback(jsonData){
+      function submitAlertCallback(jsonData){
         if(jsonData["success"] == "1"){
           // this means the user has been registere
           alert("Success!");
           window.location.replace("/loginHome/");
-          } else if(jsonData["success"] == "0"){
-            alert("Error: Something went wrong");
-          } else if(jsonData["success"] == "-1"){
-            alert("Error: You are not logged in");
-          } else if(jsonData["success"] == "-2"){
-            alert("You have too many active alerts. Delete some or upgrade");
-          }
-          else {
-            alert("Fatal error");
+        } else if(jsonData["success"] == "0"){
+          alert("Error: Something went wrong");
+        } else if(jsonData["success"] == "-1"){
+          alert("Error: You are not logged in");
+        } else if(jsonData["success"] == "-2"){
+          alert("You have too many active alerts. Delete some or upgrade");
         }
-}
+        else {
+          alert("Fatal error");
+        }
+      }
 
-</script>
-<body>
-<body onload="javascript:checkIfLoggedIn()">
-<div id="showWelcomeMessage"></div>
+      </script>
 
-<form action="javascript:submitAlert();">
-<p>Alert me when the price of BTC is </p>
-<select name="sign" id="sign">
-  <option value="lessThan">Less than (<)</option>
-  <option value="greaterThan">Greater than (>)</option>
-</select>
-than
-<input type="text" name="priceThreshold" placeholder="Price" id="priceThreshold">
-<br>
-via
-<input type="checkbox" name="emailAlert" value="email" id="emailAlert">email
-<input type="checkbox" name="textAlert" value="text" disabled="disabled" id="textAlert">text 
-<br>
-every
-<input type="text" name="timeIntervalNum" placeholder="Time interval" id="timeIntervalNum">
-<select name="timeIntervalUnit" id="timeIntervalUnit">
-  <option value="day">day(s)</option>
-  <option value="hour">hour(s)</option>
-  <option value="minute">minute(s)</option>
-</select>
-on 
-<select name="exchange" id="exchange">
-  <option value="coinbase">coinbase</option>
-  <option value="bitfinex">bitfinex</option>
-  <option value="bitstamp">bitstamp</option>
-</select>
-<br>
-<button type="submit" class="btn btn-default">Submit</button>
-</form>
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head> 
 
-<div id="showLogout"></div>
+    <body data-spy="scroll">
 
-</body>
-</html>
+
+
+      <!-- ******HEADER****** --> 
+      <header id="header" class="header">  
+        <div class="container">            
+          <h1 class="logo pull-left">
+            <a class="scrollto" href="#promo">
+              <span class="logo-title">CoinSniff</span>
+            </a>
+          </h1><!--//logo-->              
+          <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="true">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button><!--//nav-toggle-->
+            </div><!--//navbar-header-->            
+            <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="true">
+              <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="scrollto" href="/logout/">Logout</a></li>
+              </ul><!--//nav-->
+
+            </div><!--//navabr-collapse-->
+          </nav><!--//main-nav-->
+        </div>
+
+      </header><!--//header-->
+
+      <!-- ******ABOUT****** --> 
+      <section id="about" class="about section">
+        <div class="container">
+
+          <div class="row">
+           <h2 class="title text-left">Welcome back <span class="highlight">Temp Email</span></h2>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Active Alerts</h3>
+              </div>
+              <div class="panel-body">
+                Panel content
+              </div>
+            </div>    
+
+          </div><!--//row-->            
+        </div><!--//container-->
+      </section><!--//about-->
+      <!-- ******FOOTER****** --> 
+      <footer class="footer">
+        <div class="container text-center">
+          <small class="copyright">CoinSniff - 2014</small>
+        </div><!--//container-->
+      </footer><!--//footer-->
+
+      <!-- Javascript -->          
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery-1.11.1.min.js"></script>
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery.easing.1.3.js"></script>
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/prism/prism.js"></script>
+      <script type="text/javascript" src="http://coinsniff.com/static/assets/js/main.js"></script>
+      <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-58631799-1', 'auto');
+      ga('send', 'pageview');
+
+
+
+
+      </body>
+      </html> 
+
