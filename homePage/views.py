@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, HttpResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 # Create your views here.
 from django.http import HttpResponse
@@ -10,4 +10,8 @@ def index(request):
 
 @ensure_csrf_cookie
 def loginHome(request):
-    return render_to_response('loginHome.html')
+    if request.session.get('has_loggedin',False):
+
+        return render_to_response('loginHome.html')
+    else:
+        return HttpResponse("Please login first")
