@@ -7,12 +7,12 @@ from json import dumps
 from submitAlertJSON.models import Alert
 # Create your views here.
 
-def index(request, email):
+def index(request):
     
     returnDict = {}
     emailGet = request.session.get('email',False)
-    if request.session.get('has_loggedin',False) and emailGet==email:
-        alerts = getAlerts(email)
+    if request.session.get('has_loggedin',False):
+        alerts = getAlerts(emailGet)
         returnDict['success'] = 1
         returnDict['data'] = alerts
         return HttpResponse(dumps(returnDict))
