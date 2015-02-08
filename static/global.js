@@ -76,4 +76,26 @@ function postToUrl(url, params, callbackFunction){
     xmlhttp.send(paramsString);
 }
 
+function getUrl(theUrl){
+    var indexOfMainUrl = url.indexOf("http://coinsniff.com/")
+    if(indexOfMainUrl!= -1)
+    {
+        var xmlHttp = null;
+        xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false );
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
+    }else{
+        var xmlHttp = null;
+        xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "http://coinsniff.com/"+theUrl, false );
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
+    }
+}
+
+function getEmail(){
+    return getUrl("getEmailJSON")
+}
+
 
