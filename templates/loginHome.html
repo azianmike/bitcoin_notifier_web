@@ -154,8 +154,19 @@ function submitAlert(){
     }
   }
 
+  function populateUserEmail(){
+    var email = getUrl("getEmailJSON")
+    $('#welcomeBack').append("<span class=&quot;highlight&quot;>"+email+"</span>")
+  }
+
+  function onLoad(){
+    populateAlertsPanel();
+    populateUserEmail();
+    
+  }
+
   </script>
-  <body onload="javascript:populateAlertsPanel()">
+  <body onload="javascript:onLoad()">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -200,7 +211,7 @@ function submitAlert(){
         <div class="container">
 
           <div class="row">
-           <h2 class="title text-left">Welcome back <span class="highlight"><script>getUrl("getEmailJSON")</script></span></h2>
+            <h2 class="title text-left">Welcome back </h2>
            <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Active Alerts</h3>
