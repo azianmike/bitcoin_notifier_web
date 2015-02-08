@@ -98,4 +98,14 @@ function getEmail(){
     return getUrl("getEmailJSON")
 }
 
+function logout(){
+  console.log("enter");
+  var response = JSON.parse(getUrl("logout/"))['success'];
+  if(response == 1){
+    window.location.replace("/");
+  }else{
+    window.location.replace("/");
+  }
+}
+
 
