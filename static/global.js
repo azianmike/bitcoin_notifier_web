@@ -100,12 +100,9 @@ function getEmail(){
 
 function logout(){
   console.log("enter");
-  var response = JSON.parse(getUrl("logout/"))['success'];
-  if(response == 1){
-    window.location.replace("/");
-  }else{
-    window.location.replace("/");
-  }
+  var response = getUrl("logout/");
+  window.location.replace("/");
+
 }
 
 
