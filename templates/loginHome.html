@@ -61,14 +61,18 @@ function getAlerts(){
 
 function parseData(temp){
   var alertType = "";
-  console.log(temp)
+  //console.log(temp)
   if(temp['textAlert'] && temp['emailAlert']){
     alertType = "email and text";
   }else{
     if(temp['textAlert']){
       alertType = "text";
     }else{
-      alertType = "email";
+      if(temp['emailAlert']){
+        alertType = "email";
+        }else{
+        alertType = " ";
+        }
     }
   }
   var sign = "<";
@@ -101,7 +105,7 @@ function deleteAlertButton(temp){
 }
 
 function deleteAlertGetURL(alertID){
-  console.log("enter");
+  //console.log("enter");
   var response = JSON.parse(getUrl("cancelAlert/"+alertID))['success'];
   if(response == 1){
     alert("Deletion success!");
@@ -116,6 +120,7 @@ function populateAlertsPanel(){
   var alertsData = JSON.parse(getAlerts())['data'];
   for(var i=0;i<alertsData.length;i++){
     var temp = alertsData[i];
+    console.log(JSON.stringify(temp))
     var dataString = parseData(temp);
     var deleteAlertButtonString = deleteAlertButton(temp)
     $('#alerts-panel-body').append("<tr><td>"+dataString+"</td><td>"+deleteAlertButtonString+"</td></tr>");
@@ -124,7 +129,7 @@ function populateAlertsPanel(){
 }
 
 function submitAlert(){
-  console.log("enter login");
+  //console.log("enter login");
   var paramsJSON = {};
   paramsJSON['sign'] = document.getElementById("sign").value;
   paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
@@ -133,7 +138,6 @@ function submitAlert(){
   paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
   paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
   paramsJSON['exchange'] = document.getElementById("exchange").value;
-        //console.log(paramsJSON)
         postToUrl("/submitAlertJSON/", paramsJSON, submitAlertCallback);
       }
 

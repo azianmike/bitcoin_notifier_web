@@ -21,7 +21,11 @@ def index(request):
         priceThresholdPost = request.POST.get("priceThreshold")
         signPost = request.POST.get("sign")
         emailAlertPost = request.POST.get("emailAlert")
+        if emailAlertPost == 'false':
+            emailAlertPost = False
         textAlertPost = request.POST.get("textAlert")
+        if textAlertPost == 'false':
+            textAlertPost=False
         timeIntervalNumPost = request.POST.get("timeIntervalNum")
         timeIntervalUnitPost = request.POST.get("timeIntervalUnit")
         exchangePost = request.POST.get("exchange")
