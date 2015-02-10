@@ -120,7 +120,7 @@ function populateAlertsPanel(){
   var alertsData = JSON.parse(getAlerts())['data'];
   for(var i=0;i<alertsData.length;i++){
     var temp = alertsData[i];
-    console.log(JSON.stringify(temp))
+    //console.log(JSON.stringify(temp))
     var dataString = parseData(temp);
     var deleteAlertButtonString = deleteAlertButton(temp)
     $('#alerts-panel-body').append("<tr><td>"+dataString+"</td><td>"+deleteAlertButtonString+"</td></tr>");
