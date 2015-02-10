@@ -242,14 +242,14 @@ function submitAlert(){
               </table>
             </div>
           </div>  
-
+          <div class="well well-lg" >
           <form action="javascript:submitAlert();">
             <p>Alert me when the price of BTC is </p>
             <select name="sign" id="sign">
-              <option value="lessThan">Less than (<)</option>
-              <option value="greaterThan">Greater than (>)</option>
+              <option value="lessThan">Less (<)</option>
+              <option value="greaterThan">Greater (>)</option>
             </select>
-            than
+            than $
             <input type="text" name="priceThreshold" placeholder="Price" id="priceThreshold">
             <br>
             via
@@ -257,12 +257,14 @@ function submitAlert(){
             <input type="checkbox" name="textAlert" value="text" disabled="disabled" id="textAlert">text 
             <br>
             every
+            
             <input type="text" name="timeIntervalNum" placeholder="Time interval" id="timeIntervalNum">
             <select name="timeIntervalUnit" id="timeIntervalUnit">
               <option value="day">day(s)</option>
               <option value="hour">hour(s)</option>
               <option value="minute">minute(s)</option>
             </select>
+            </span>
             on 
             <select name="exchange" id="exchange">
               <option value="coinbase">coinbase</option>
@@ -272,7 +274,7 @@ function submitAlert(){
             <br>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>  
-
+        </div> <!--//well-->
         </div><!--//row-->            
       </div><!--//container-->
     </section><!--//about-->
