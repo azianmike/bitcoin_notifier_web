@@ -28,3 +28,9 @@ def index(request):
         tempNumAlerts = NumAlertsPerPerson.objects.create(person=userToAdd)
         returnDict['success']=1
         return HttpResponse(dumps(returnDict))
+
+def activate(request, activationID):
+    personToActivate = Person.objects.get(activateCode=activationID)
+    personToActivate.activated = True
+    personToActivate.save()
+    return HttpResponse("activated")
