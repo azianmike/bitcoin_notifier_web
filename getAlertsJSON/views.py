@@ -4,7 +4,7 @@ from registerJSON.models import Person
 from django.template.defaulttags import csrf_token
 from django.http import HttpResponse
 from json import dumps
-from submitAlertJSON.models import Alert
+from submitAlertJSON.models import Alert, NumAlertsPerPerson
 # Create your views here.
 
 def index(request):
@@ -37,3 +37,16 @@ def getAlerts(emailTemp):
         alertList.append(alertTemp)
 
     return alertList
+
+def getNumAlerts(request):
+    emailGet = request.session.get('email',False)
+    returnDict = {}
+    if request.session.get('has_loggedin',False):    
+        numAlertsObj=NumAlertsPerPerson.objects.get(person_id=emailGet)
+        returnDict['success'] = 1
+        returnDict['numAlerts'] = numAlertsObj.numAlerts
+        returnDict['maxAlerts'] = numAlertsObj.maxAlerts
+        return HttpResponse(dumps(returnDict))
+    else:
+        returnDict['success'] = -1
+        return HttpResponse(dumps(returnDict))

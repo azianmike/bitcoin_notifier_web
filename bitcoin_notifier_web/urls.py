@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^logout/', 'logout.views.index'),
     url(r'^cancelAlert/(?P<alertIDTemp>\w{0,100})/$', 'cancelAlert.views.index'),
     url(r'^getAlertsJSON/', 'getAlertsJSON.views.index'),
+    url(r'^getNumAlertsJSON/', 'getAlertsJSON.views.getNumAlerts'),
     url(r'^getEmailJSON/', 'getEmailJSON.views.index'),
 )
