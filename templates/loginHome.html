@@ -163,10 +163,27 @@ function submitAlert(){
     $('#welcomeBack').append("<span class=&quot;highlight&quot;>"+email+"</span>")
   }
 
+  function getActiveAlerts(){
+    var alertsJSON = JSON.parse(getUrl("getNumAlertsJSON"));
+    if(alertsJSON["success"] == 1){
+      return alertsJSON;
+    }else{
+      return null
+    }
+  }
+
+  function populateNumActiveAlerts(){
+    var alertsJSON = getActiveAlerts();
+    if(alertsJSON!=null){
+      var stringToAppend = alertsJSON["numAlerts"]+" out of "+alertsJSON["maxAlerts"]+" used."
+      $("#alertsPanelTitle").append(" - "+stringToAppend)
+    }
+  }
+
   function onLoad(){
     populateAlertsPanel();
     populateUserEmail();
-    
+    populateNumActiveAlerts();
   }
 
   </script>
@@ -218,7 +235,7 @@ function submitAlert(){
             <h2 class="title text-left" id="welcomeBack">Welcome back </h2>
            <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Active Alerts</h3>
+              <h3 class="panel-title" id="alertsPanelTitle">Active Alerts</h3>
             </div>
             <div class="panel-body">
               <table class="table" id="alerts-panel-body">
