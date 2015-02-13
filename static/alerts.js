@@ -89,7 +89,8 @@ function submitAlert(){
 
   function submitAlertCallback(jsonData){
         if(jsonData["success"] == "1"){
-      showAlertMessage(jsonData["message"]);   
+      showAlertMessage(jsonData["message"]);
+
     } else if(jsonData["success"] == "0"){
       showAlertMessage(jsonData["message"]);   
     } else if(jsonData["success"] == "-1"){
@@ -119,8 +120,8 @@ function submitAlert(){
   function populateNumActiveAlerts(){
     var alertsJSON = getActiveAlerts();
     if(alertsJSON!=null){
-      var stringToAppend = alertsJSON["numAlerts"]+" out of "+alertsJSON["maxAlerts"]+" used."
-      $("#alertsPanelTitle").append(" - "+stringToAppend)
+      var stringToAppend = "Active Alerts - "+alertsJSON["numAlerts"]+" out of "+alertsJSON["maxAlerts"]+" used."
+      $("#alertsPanelTitle").insert(" - "+stringToAppend)
     }
   }
 
