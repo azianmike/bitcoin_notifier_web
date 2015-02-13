@@ -90,14 +90,14 @@ function submitAlert(){
       function submitAlertCallback(jsonData){
         if(jsonData["success"] == "1"){
       // this means the user has been registere
-      alert("Success!");
+      showAlertMessage(jsonData["message"]);   
       window.location.replace("/loginHome/");
     } else if(jsonData["success"] == "0"){
-      alert("Error: Something went wrong");
+      showAlertMessage(jsonData["message"]);   
     } else if(jsonData["success"] == "-1"){
-      alert("Error: You are not logged in");
+      showAlertMessage(jsonData["message"]);   
     } else if(jsonData["success"] == "-2"){
-      alert("You have too many active alerts. Delete some or upgrade");
+      showAlertMessage(jsonData["message"]);   
     }
     else {
       alert("Fatal error");
