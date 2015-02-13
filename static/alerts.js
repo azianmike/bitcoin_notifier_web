@@ -64,14 +64,15 @@ function deleteAlertGetURL(alertID){
 
 function populateAlertsPanel(){
   var alertsData = JSON.parse(getAlerts())['data'];
+  var finalHtml = "";
   for(var i=0;i<alertsData.length;i++){
     var temp = alertsData[i];
     //console.log(JSON.stringify(temp))
     var dataString = parseData(temp);
     var deleteAlertButtonString = deleteAlertButton(temp)
-    $('#alerts-panel-body').append("<tr><td>"+dataString+"</td><td>"+deleteAlertButtonString+"</td></tr>");
-
+    finalHtml += "<tr><td>"+dataString+"</td><td>"+deleteAlertButtonString+"</td></tr>";
   }
+  $('#alerts-panel-body').html(finalHtml);
 }
 
 function submitAlert(){
@@ -101,11 +102,13 @@ function submitAlert(){
     else {
       alert("Fatal error");
     }
+
+    onLoad();
   }
 
   function populateUserEmail(){
     var email = getUrl("getEmailJSON")
-    $('#welcomeBack').append("<span class=&quot;highlight&quot;>"+email+"</span>")
+    $('#welcomeBack').html("Welcome back <span class=&quot;highlight&quot;>"+email+"</span>")
   }
 
   function getActiveAlerts(){
