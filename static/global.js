@@ -105,4 +105,11 @@ function logout(){
 
 }
 
+function showAlertMessage(message)
+{
+    $("#alertBox").append(message);
+    $("#alertBox").show();
+
+}
+
 

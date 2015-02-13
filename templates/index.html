@@ -2,7 +2,6 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
-{% load staticfiles %}
 <head>
 
     <title>CoinSniff - Bitcoin Price Alert Notifications</title>
@@ -15,18 +14,18 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
     <!-- Global CSS -->
-    <link rel="stylesheet" href="{% static "assets/plugins/bootstrap/css/bootstrap.min.css"%}">
+    <link rel="stylesheet" href="http://coinsniff.com/static/assets/plugins/bootstrap/css/bootstrap.min.css">
     <!-- Plugins CSS -->    
-    <link rel="stylesheet" href="{% static "assets/plugins/font-awesome/css/font-awesome.css"%}">
-    <link rel="stylesheet" href="{% static "assets/plugins/prism/prism.css"%}">
+    <link rel="stylesheet" href="http://coinsniff.com/static/assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="http://coinsniff.com/static/assets/plugins/prism/prism.css">
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="{% static "assets/css/styles-3.css"%}">
-    <link href="{% static "assets/css/main.css"%}" rel="stylesheet"> 
+    <link id="theme-style" rel="stylesheet" href="http://coinsniff.com/static/assets/css/styles-3.css">
+    <link href="http://coinsniff.com/static/assets/css/main.css" rel="stylesheet"> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{% static "global.js"%}"></script>
-    <script src="{% static "sha512.js"%}"></script>
-    <script src="{% static "register.js"%}"></script>
-    <script src="{% static "login.js"%}"></script>
+    <script src="http://coinsniff.com/static/global.js"></script>
+    <script src="http://coinsniff.com/static/sha512.js"></script>
+    <script src="http://coinsniff.com/static/register.js"></script>
+    <script src="http://coinsniff.com/static/login.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,12 +35,14 @@
   </head> 
 
   <body data-spy="scroll">
+    <body onload="javascript:showAlertMessage("test");">
 
 
       <!-- ******HEADER****** --> 
       <header id="header" class="header">  
-<div class="alert alert-info" role="alert" hidden="true">
+        <div class="alert alert-info" role="alert" id="alertBox" hidden="true">
     <button type="button" class="close" data-dismiss="alert">×</button>
+
 </div>
         <div class="container">            
             <h1 class="logo pull-left">
@@ -80,6 +81,7 @@
 
     <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
+        
         <div class="container text-center">
             <h2 class="title">Coin<span class="highlight">Sniff</span></h2>
             <p class="intro">Price alert notifications for bitcoin</p>
@@ -274,18 +276,18 @@
 </footer><!--//footer-->
 
 <!-- Javascript -->          
-<script type="text/javascript" src="{% static "assets/plugins/jquery-1.11.1.min.js"%}"></script>
-<script type="text/javascript" src="{% static "assets/plugins/jquery-migrate-1.2.1.min.js"%}"></script>
-<script type="text/javascript" src="{% static "assets/plugins/jquery.easing.1.3.js"%}"></script>
-<script type="text/javascript" src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js"%}"></script>
-<script type="text/javascript" src="{% static "assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"%}"></script>
-<script type="text/javascript" src="{% static "assets/plugins/prism/prism.js"%}"></script>
-<script type="text/javascript" src="{% static "assets/js/main.js"%}"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/plugins/prism/prism.js"></script>
+<script type="text/javascript" src="http://coinsniff.com/static/assets/js/main.js"></script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-58631799-1', 'auto');
 ga('send', 'pageview');
