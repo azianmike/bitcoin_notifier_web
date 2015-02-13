@@ -91,7 +91,6 @@ function submitAlert(){
         if(jsonData["success"] == "1"){
       // this means the user has been registere
       showAlertMessage(jsonData["message"]);   
-      window.location.replace("/loginHome/");
     } else if(jsonData["success"] == "0"){
       showAlertMessage(jsonData["message"]);   
     } else if(jsonData["success"] == "-1"){
