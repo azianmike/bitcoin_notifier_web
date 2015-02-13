@@ -54,12 +54,12 @@ function deleteAlertGetURL(alertID){
   //console.log("enter");
   var response = JSON.parse(getUrl("cancelAlert/"+alertID))['success'];
   if(response == 1){
-    alert("Deletion success!");
-    window.location.replace("/loginHome/");
+	showAlertMessage(jsonData["message"]);
   }else{
-    alert("Failure!");
-    window.location.replace("/loginHome/");
+	showAlertMessage(jsonData["message"]);
   }
+
+  onLoad();
 }
 
 function populateAlertsPanel(){
