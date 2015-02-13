@@ -87,9 +87,8 @@ function submitAlert(){
         postToUrl("/submitAlertJSON/", paramsJSON, submitAlertCallback);
       }
 
-      function submitAlertCallback(jsonData){
+  function submitAlertCallback(jsonData){
         if(jsonData["success"] == "1"){
-      // this means the user has been registere
       showAlertMessage(jsonData["message"]);   
     } else if(jsonData["success"] == "0"){
       showAlertMessage(jsonData["message"]);   
