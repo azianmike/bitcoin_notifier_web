@@ -12,12 +12,16 @@ function register(){
 function registerCallback(jsonData){
         if(jsonData["success"] == "1"){
           // this means the user has been registere
-          alert("Success!");
-          window.location.replace("/");
+            window.location.replace("/");
+            showAlertMessage(jsonData["message"]);            
           } else if(jsonData["success"] == "0"){
-            alert("Error: Email is already registered");
+            window.location.replace("/");
+            showAlertMessage(jsonData["message"]);            
+           //alert("Error: Email is already registered");
           } else {
-            alert("Fatal error");
+            window.location.replace("/");
+            showAlertMessage(jsonData["message"]);
+            //alert("Fatal error");
         }
 
 

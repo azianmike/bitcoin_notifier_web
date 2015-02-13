@@ -12,6 +12,7 @@ def index(request):
     returnDict['success'] = -1
     if request.session.get('has_loggedin',False):
         returnDict['success'] = -2
+        returnDict['message'] = 'Already logged in'
         return HttpResponse(dumps(returnDict))    
 
     try:
@@ -26,6 +27,7 @@ def index(request):
         return HttpResponse(dumps(returnDict))
     except Person.DoesNotExist:
         returnDict['success'] = 0
+        returnDict['message'] = 'Email does not exist or password is not correct'
         return HttpResponse(dumps(returnDict))
 
 

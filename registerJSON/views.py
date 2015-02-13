@@ -21,6 +21,7 @@ def index(request):
     try:
         checkOld = Person.objects.get(email=emailPost)
         returnDict['success']=0
+        returnDict['message']="Email is already registered!"
         return HttpResponse(dumps(returnDict))
     except Person.DoesNotExist:
         f='%Y-%m-%d'
@@ -33,6 +34,7 @@ def index(request):
         userToAdd.save()
         tempNumAlerts = NumAlertsPerPerson.objects.create(person=userToAdd)
         returnDict['success']=1
+        returnDict['message'] = "Registered! Check your email to activate your account"
         return HttpResponse(dumps(returnDict))
 
 def activate(request, activationID):
