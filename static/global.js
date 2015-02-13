@@ -107,7 +107,9 @@ function logout(){
 
 function showAlertMessage(message)
 {
-    $("#alertBox").append(message);
+    var htmlTemp = "<div class=alert&#32;alert-info role=alert id=alertBox>"+
+    "<button type=button class=close data-dismiss=alert>×<\/button>"+message+"</div>"
+    $("#alertBox").html(htmlTemp);
     $("#alertBox").show();
 
 }
