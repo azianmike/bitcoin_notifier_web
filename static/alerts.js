@@ -52,8 +52,8 @@ function deleteAlertButton(temp){
 
 function deleteAlertGetURL(alertID){
   //console.log("enter");
-  var response = JSON.parse(getUrl("cancelAlert/"+alertID))['success'];
-  if(response == 1){
+  var jsonData = JSON.parse(getUrl("cancelAlert/"+alertID));
+  if(jsonData["success"] == 1){
 	showAlertMessage(jsonData["message"]);
   }else{
 	showAlertMessage(jsonData["message"]);
