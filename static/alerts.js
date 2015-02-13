@@ -121,7 +121,7 @@ function submitAlert(){
     var alertsJSON = getActiveAlerts();
     if(alertsJSON!=null){
       var stringToAppend = "Active Alerts - "+alertsJSON["numAlerts"]+" out of "+alertsJSON["maxAlerts"]+" used."
-      $("#alertsPanelTitle").insert(" - "+stringToAppend)
+      $("#alertsPanelTitle").html(stringToAppend)
     }
   }
 
