@@ -7,12 +7,17 @@ import datetime
 from hashlib import sha224
 # Create your views here.
 from django.http import HttpResponse
+from sentActivationEmail import sendActivationEmail
+
 
 def index(request):
     emailPost = request.POST.get("email", "")
     phonePost = request.POST.get("phone")
     passwordPost = request.POST.get("password", "")
     returnDict = {}
+    if not request.session.get('store_cookie',False):
+        returnDict['success'] = -1
+        return HttpResponse(dumps(returnDict))
     try:
         checkOld = Person.objects.get(email=emailPost)
         returnDict['success']=0
@@ -22,6 +27,7 @@ def index(request):
         now = datetime.datetime.now()
         mysqlTime = now.strftime(f)
         activateCodeTemp = sha224(emailPost+"randomWord").hexdigest()
+        sendActivationEmail(emailPost, activateCodeTemp)
         userToAdd = Person.objects.create(email=emailPost, password=passwordPost,joinDate=mysqlTime, activateCode=activateCodeTemp)    
         userToAdd.phone = phonePost
         userToAdd.save()

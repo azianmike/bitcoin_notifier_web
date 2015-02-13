@@ -11,12 +11,15 @@ def index(request):
     returnDict = {}
     returnDict['success'] = -1
     if request.session.get('has_loggedin',False):
-        username = request.session.get('email',False)
         returnDict['success'] = -2
         return HttpResponse(dumps(returnDict))    
 
     try:
         checkOld = Person.objects.get(email=emailPost, password=passwordPost)
+        if checkOld.activated == 0:
+            returnDict['success'] = -3
+            returnDict['message'] = 'Please activate your email'
+            return HttpResponse(dumps(returnDict))
         returnDict['success'] = 1
         request.session['has_loggedin'] = True
         request.session['email'] = emailPost

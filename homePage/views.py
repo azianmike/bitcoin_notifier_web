@@ -12,6 +12,7 @@ def index(request):
         url = reverse('loginHome', args=(),kwargs={})
         return HttpResponseRedirect(url)
     else:
+        request.session['store_cookie'] = True
         return render_to_response('index.html')  
 
 @ensure_csrf_cookie
