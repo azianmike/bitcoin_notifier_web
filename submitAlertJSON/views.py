@@ -17,6 +17,7 @@ def index(request):
         numAlerts = NumAlertsPerPerson.objects.get(person=emailGet)
         if numAlerts.numAlerts == numAlerts.maxAlerts:
             returnDict['success'] = -2
+            returnDict['message']='You have too many active alerts!'
             return HttpResponse(dumps(returnDict))
         priceThresholdPost = request.POST.get("priceThreshold")
         signPost = request.POST.get("sign")
@@ -51,6 +52,7 @@ def index(request):
         numAlerts.numAlerts += 1
         numAlerts.save()
         returnDict['success']=1
+        returnDict['message']='Successfully added alert!'
         return HttpResponse(dumps(returnDict))
     else:
         returnDict = {}
