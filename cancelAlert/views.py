@@ -13,8 +13,10 @@ def index(request, alertIDTemp):
         numAlerts.save()
         alertToDelete.delete()
         returnDict['success'] = 1
+        returnDict['message'] = 'Successfully deleted alert'
         return HttpResponse(dumps(returnDict))        
     except Alert.DoesNotExist:
         returnDict['success'] = -2
+        returnDict['message'] = 'Alert does not exist'
         return HttpResponse(dumps(returnDict))
 

@@ -14,7 +14,7 @@ def sendActivationUsingMandrill(recipient, message):
     sender = 'notify@coinsniff.com'
     receivers = [recipient]
 
-    message = 'From:'+sender+'\r\nTo:'+recipient+'\r\nSubject: Bitcoin notifier \n\n' + message
+    message = 'From:'+sender+'\r\nTo:'+recipient+'\r\nSubject: CoinSniff Activation \n\n' + message
 
 
     try:
