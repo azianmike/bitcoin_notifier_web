@@ -20,3 +20,14 @@ def index(request, alertIDTemp):
         returnDict['message'] = 'Alert does not exist'
         return HttpResponse(dumps(returnDict))
 
+def cancelPage(request, alertIDTemp):
+    try:
+        alertToDelete = Alert.objects.get(alertID=alertIDTemp)
+        person = alertToDelete.person_id
+        numAlerts = NumAlertsPerPerson.objects.get(person_id=person)
+        numAlerts.decreaseActiveAlerts()
+        numAlerts.save()
+        alertToDelete.delete()
+        return render(request, 'loginHome.html', {'hiddenVar':'False', 'alertMessage':'Successfully canceled alert'})     
+    except Alert.DoesNotExist:
+        return render(request, 'loginHome.html', {'hiddenVar':'False', 'alertMessage':'Unsuccessfully canceled alert'})  
