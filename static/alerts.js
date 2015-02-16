@@ -79,10 +79,10 @@ function submitAlert(){
   //console.log("enter login");
   var paramsJSON = {};
   paramsJSON['sign'] = document.getElementById("sign").value;
-  paramsJSON['priceThreshold'] = document.getElementById("priceThreshold").value;
+  paramsJSON['priceThreshold'] = Number(document.getElementById("priceThreshold").value);
   paramsJSON['emailAlert'] = document.getElementById("emailAlert").checked;
   paramsJSON['textAlert'] = document.getElementById("textAlert").checked;
-  paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
+  paramsJSON['timeIntervalNum'] = Number(document.getElementById("timeIntervalNum").value);
   paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
   paramsJSON['exchange'] = document.getElementById("exchange").value;
   console.log(!paramsJSON["sign"])
