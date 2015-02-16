@@ -31,6 +31,10 @@ def index(request):
         timeIntervalUnitPost = request.POST.get("timeIntervalUnit")
         exchangePost = request.POST.get("exchange")
 
+        if not priceThresholdPost or not signPost or not timeIntervalNumPost or not timeIntervalUnitPost or not exchangePost:
+            returnDict['success'] = -3
+            returnDict['message'] = 'Please correctly fill out all fields'
+            return HttpResponse(dumps(returnDict))
         
         personGet = Person.objects.get(email=emailGet)
         alertIDTemp = sha224(emailGet+str(int(time.time()))).hexdigest()
