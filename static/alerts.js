@@ -94,6 +94,8 @@ function submitAlert(){
   console.log(!paramsJSON["exchange"])
   console.log(!(typeof paramsJSON['priceThreshold'] === "number"))
   console.log(!(typeof paramsJSON['timeIntervalNum'] === "number"))
+  console.log(typeof paramsJSON['timeIntervalNum'])
+  console.log(typeof paramsJSON['priceThreshold'])
   if(!paramsJSON["sign"] || !paramsJSON["priceThreshold"] || !(paramsJSON["emailAlert"]  || paramsJSON["textAlert"]) || !paramsJSON["timeIntervalNum"] || !paramsJSON["timeIntervalUnit"] || !paramsJSON["exchange"] || !(typeof paramsJSON['priceThreshold'] === "number") || !(typeof paramsJSON['timeIntervalNum'] === "number"))
   {
       alert("Fill in all fields correctly");
