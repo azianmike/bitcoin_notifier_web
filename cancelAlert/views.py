@@ -2,6 +2,7 @@ from submitAlertJSON.models import Alert, NumAlertsPerPerson
 # Create your views here.
 from django.http import HttpResponse
 from json import dumps
+from django.shortcuts import render
 
 def index(request, alertIDTemp):
     returnDict={}    
@@ -28,6 +29,6 @@ def cancelPage(request, alertIDTemp):
         numAlerts.decreaseActiveAlerts()
         numAlerts.save()
         alertToDelete.delete()
-        return render(request, 'loginHome.html', {'hiddenVar':'False', 'alertMessage':'Successfully canceled alert'})     
+        return render(request, 'index.html', {'hiddenVar':'False', 'alertMessage':'Successfully canceled alert'})     
     except Alert.DoesNotExist:
-        return render(request, 'loginHome.html', {'hiddenVar':'False', 'alertMessage':'Unsuccessfully canceled alert'})  
+        return render(request, 'index.html', {'hiddenVar':'False', 'alertMessage':'Unsuccessfully canceled alert'})  
