@@ -16,9 +16,9 @@ function parseData(temp){
     }else{
       if(temp['emailAlert']){
         alertType = "email";
-        }else{
+      }else{
         alertType = " ";
-        }
+      }
     }
   }
   var sign = "<";
@@ -54,12 +54,12 @@ function deleteAlertGetURL(alertID){
   //console.log("enter");
   var jsonData = JSON.parse(getUrl("cancelAlert/"+alertID));
   if(jsonData["success"] == 1){
-	showAlertMessage(jsonData["message"]);
-  }else{
-	showAlertMessage(jsonData["message"]);
-  }
+   showAlertMessage(jsonData["message"]);
+ }else{
+   showAlertMessage(jsonData["message"]);
+ }
 
-  onLoad();
+ onLoad();
 }
 
 function populateAlertsPanel(){
@@ -85,51 +85,57 @@ function submitAlert(){
   paramsJSON['timeIntervalNum'] = document.getElementById("timeIntervalNum").value;
   paramsJSON['timeIntervalUnit'] = document.getElementById("timeIntervalUnit").value;
   paramsJSON['exchange'] = document.getElementById("exchange").value;
-        postToUrl("/submitAlertJSON/", paramsJSON, submitAlertCallback);
-      }
-
-  function submitAlertCallback(jsonData){
-        if(jsonData["success"] == "1"){
-      showAlertMessage(jsonData["message"]);
-
-    } else if(jsonData["success"] == "0"){
-      showAlertMessage(jsonData["message"]);   
-    } else if(jsonData["success"] == "-1"){
-      showAlertMessage(jsonData["message"]);   
-    } else if(jsonData["success"] == "-2"){
-      showAlertMessage(jsonData["message"]);   
-    }
-    else {
-      alert("Fatal error");
-    }
-
-    onLoad();
+  if(!paramsJSON["sign"] && !paramsJSON["priceThreshold"] && !(paramsJSON["emailAlert"]  && paramsJSON["textAlert"]) && !paramsJSON["timeIntervalNum"] && !paramsJSON["timeIntervalUnit"] && !paramsJSON["exchange"] && !(typeof paramsJSON['priceThreshold'] === "number") && (typeof paramsJSON['timeIntervalNum'] === "number"))
+  {
+      alert("Fill in all fields correctly");
+  }else{
+      postToUrl("/submitAlertJSON/", paramsJSON, submitAlertCallback);
   }
 
-  function populateUserEmail(){
-    var email = getUrl("getEmailJSON")
-    $('#welcomeBack').html("Welcome back <span class=&quot;highlight&quot;>"+email+"</span>")
+}
+
+function submitAlertCallback(jsonData){
+  if(jsonData["success"] == "1"){
+    showAlertMessage(jsonData["message"]);
+
+  } else if(jsonData["success"] == "0"){
+    showAlertMessage(jsonData["message"]);   
+  } else if(jsonData["success"] == "-1"){
+    showAlertMessage(jsonData["message"]);   
+  } else if(jsonData["success"] == "-2"){
+    showAlertMessage(jsonData["message"]);   
+  }
+  else {
+    alert("Fatal error");
   }
 
-  function getActiveAlerts(){
-    var alertsJSON = JSON.parse(getUrl("getNumAlertsJSON"));
-    if(alertsJSON["success"] == 1){
-      return alertsJSON;
-    }else{
-      return null
-    }
-  }
+  onLoad();
+}
 
-  function populateNumActiveAlerts(){
-    var alertsJSON = getActiveAlerts();
-    if(alertsJSON!=null){
-      var stringToAppend = "Active Alerts - "+alertsJSON["numAlerts"]+" out of "+alertsJSON["maxAlerts"]+" used."
-      $("#alertsPanelTitle").html(stringToAppend)
-    }
-  }
+function populateUserEmail(){
+  var email = getUrl("getEmailJSON")
+  $('#welcomeBack').html("Welcome back <span class=&quot;highlight&quot;>"+email+"</span>")
+}
 
-  function onLoad(){
-    populateAlertsPanel();
-    populateUserEmail();
-    populateNumActiveAlerts();
+function getActiveAlerts(){
+  var alertsJSON = JSON.parse(getUrl("getNumAlertsJSON"));
+  if(alertsJSON["success"] == 1){
+    return alertsJSON;
+  }else{
+    return null
   }
+}
+
+function populateNumActiveAlerts(){
+  var alertsJSON = getActiveAlerts();
+  if(alertsJSON!=null){
+    var stringToAppend = "Active Alerts - "+alertsJSON["numAlerts"]+" out of "+alertsJSON["maxAlerts"]+" used."
+    $("#alertsPanelTitle").html(stringToAppend)
+  }
+}
+
+function onLoad(){
+  populateAlertsPanel();
+  populateUserEmail();
+  populateNumActiveAlerts();
+}
