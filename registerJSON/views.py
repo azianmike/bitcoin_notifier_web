@@ -38,7 +38,8 @@ def index(request):
         return HttpResponse(dumps(returnDict))
 
 def activate(request, activationID):
+    from django.shortcuts import render
     personToActivate = Person.objects.get(activateCode=activationID)
     personToActivate.activated = True
     personToActivate.save()
-    return HttpResponse("activated")
+    return render(request, 'index.html', {'hiddenVar':'', 'alertMessage':'Successfully activated account'})  
