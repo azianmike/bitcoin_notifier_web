@@ -25,7 +25,7 @@ function parseData(temp){
   if(temp['sign'] == "greaterThan"){
     sign = ">";
   }
-  var timeSpan = temp['intervalInSeconds'];
+  var timeSpan = temp['intervalInSeconds']/60;
   var timeUnits = "minutes";
   if(temp['intervalInSeconds'] % 86400 != temp['intervalInSeconds'])
   {
