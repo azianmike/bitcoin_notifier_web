@@ -18,6 +18,12 @@ class Alert(models.Model):
         import time        
         self.nextAlert = int(time.time()) + self.intervalInSeconds 
         super(Alert, self).save()
+
+    def deleteAlert(self):
+        temp = NumAlertsPerPerson.objects.get(person=self.person)
+        temp.decreaseActiveAlerts()
+        temp.save()
+        self.delete()
     
 
 class NumAlertsPerPerson(models.Model):
@@ -35,3 +41,8 @@ class NumAlertsPerPerson(models.Model):
             return
         
         self.numAlerts += 1
+
+class AlertsPerHour(models.Model):
+    lastHour = models.IntegerField(default=0)
+    alertsSentInLastHour = models.IntegerField(default=0)
+    person = models.ForeignKey('registerJSON.Person', primary_key=True)

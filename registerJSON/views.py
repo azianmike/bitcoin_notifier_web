@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from registerJSON.models import Person
-from submitAlertJSON.models import NumAlertsPerPerson
+from submitAlertJSON.models import NumAlertsPerPerson, AlertsPerHour
 from django.template.defaulttags import csrf_token
 from json import dumps
 import datetime
@@ -33,6 +33,7 @@ def index(request):
         userToAdd.phone = phonePost
         userToAdd.save()
         tempNumAlerts = NumAlertsPerPerson.objects.create(person=userToAdd)
+        tempAlertsPerHour = AlertsPerHour.objects.create(person=userToAdd)
         returnDict['success']=1
         returnDict['message'] = "Registered! Check your email to activate your account"
         return HttpResponse(dumps(returnDict))
