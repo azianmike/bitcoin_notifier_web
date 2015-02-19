@@ -8,6 +8,11 @@ from hashlib import sha224
 # Create your views here.
 from django.http import HttpResponse
 from sentActivationEmail import sendActivationEmail
+from re import match
+
+def checkValidEmail(email):
+    pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+    return bool(match(email))
 
 
 def index(request):
@@ -17,6 +22,7 @@ def index(request):
     returnDict = {}
     if not request.session.get('store_cookie',False):
         returnDict['success'] = -1
+        returnDict['message']='Please use our webapp'
         return HttpResponse(dumps(returnDict))
     try:
         checkOld = Person.objects.get(email=emailPost)
@@ -24,6 +30,10 @@ def index(request):
         returnDict['message']="Email is already registered!"
         return HttpResponse(dumps(returnDict))
     except Person.DoesNotExist:
+        if !checkValidEmail(emailPost):
+            returnDict['success'] = -1
+            returnDict['message']='Invalid email address'
+            return HttpResponse(dumps(returnDict))
         f='%Y-%m-%d'
         now = datetime.datetime.now()
         mysqlTime = now.strftime(f)
