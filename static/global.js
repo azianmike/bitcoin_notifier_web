@@ -77,7 +77,7 @@ function postToUrl(url, params, callbackFunction){
 }
 
 function getUrl(theUrl){
-    var indexOfMainUrl = theUrl.indexOf("http://coinsniff.com/");
+    var indexOfMainUrl = theUrl.indexOf("http://www.coinsniff.com/");
     if(indexOfMainUrl!= -1)
     {
         var xmlHttp = null;
@@ -88,7 +88,7 @@ function getUrl(theUrl){
     }else{
         var xmlHttp = null;
         xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", "http://coinsniff.com/"+theUrl, false );
+        xmlHttp.open( "GET", "http://www.coinsniff.com/"+theUrl, false );
         xmlHttp.send( null );
         return xmlHttp.responseText;
     }
