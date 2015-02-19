@@ -53,4 +53,4 @@ def activate(request, activationID):
     personToActivate = Person.objects.get(activateCode=activationID)
     personToActivate.activated = True
     personToActivate.save()
-    return render(request, 'index.html', {'hiddenVar':'', 'alertMessage':'Successfully activated account'})  
+    return render(request, 'index.html', {'hiddenVar':' ', 'alertMessage':'Successfully activated account'})  
