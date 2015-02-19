@@ -30,7 +30,7 @@ def index(request):
         returnDict['message']="Email is already registered!"
         return HttpResponse(dumps(returnDict))
     except Person.DoesNotExist:
-        if !checkValidEmail(emailPost):
+        if not checkValidEmail(emailPost):
             returnDict['success'] = -1
             returnDict['message']='Invalid email address'
             return HttpResponse(dumps(returnDict))
