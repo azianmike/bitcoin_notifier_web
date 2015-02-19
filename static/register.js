@@ -3,7 +3,7 @@ function register(){
         var paramsJSON = {};
 
         paramsJSON['email'] = document.getElementById("email").value;
-        if (validateEmail(paramsJSON['email'])){
+        if (!validateEmail(paramsJSON['email'])){
           alert("Email is not valid");
           return;
         }
@@ -16,7 +16,6 @@ function register(){
 
 function validateEmail(email) { 
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log(re.test(email))
     return re.test(email);
 } 
 
