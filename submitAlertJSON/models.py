@@ -29,7 +29,7 @@ class Alert(models.Model):
 class NumAlertsPerPerson(models.Model):
     person = models.ForeignKey('registerJSON.Person', primary_key=True)
     numAlerts = models.IntegerField(default=0)
-    maxAlerts = models.IntegerField(default=1)
+    maxAlerts = models.IntegerField(default=5)
     
     def decreaseActiveAlerts(self):
         if self.numAlerts==0:
