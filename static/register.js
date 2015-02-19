@@ -3,7 +3,7 @@ function register(){
         var paramsJSON = {};
 
         paramsJSON['email'] = document.getElementById("email").value;
-        if (validateEmail(paramsJSON['email']){
+        if (validateEmail(paramsJSON['email'])){
           alert("Email is not valid");
           return;
         }
