@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '=obna=zco@-#9^(cuemmr!zvxg8_=od5vj2s@sypdno=mv5qql'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -59,23 +59,13 @@ ROOT_URLCONF = 'bitcoin_notifier_web.urls'
 
 WSGI_APPLICATION = 'bitcoin_notifier_web.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_db',
         'USER': 'root',
-        'PASSWORD': '!!@@##$$',
+        'PASSWORD': '!!223344',
+        'HOST': '54.152.103.15',
     }
 }
 
@@ -97,7 +87,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/antiebay/static/'
+STATIC_ROOT = '/var/www/bitcoin_notifier/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
