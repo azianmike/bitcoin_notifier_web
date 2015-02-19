@@ -29,6 +29,6 @@ def cancelPage(request, alertIDTemp):
         numAlerts.decreaseActiveAlerts()
         numAlerts.save()
         alertToDelete.delete()
-        return render(request, 'index.html', {'hiddenVar':'', 'alertMessage':'Successfully canceled alert'})     
+        return render(request, 'index.html', {'hiddenVar':' ', 'alertMessage':'Successfully canceled alert'})     
     except Alert.DoesNotExist:
-        return render(request, 'index.html', {'hiddenVar':'', 'alertMessage':'Unsuccessfully canceled alert'})  
+        return render(request, 'index.html', {'hiddenVar':' ', 'alertMessage':'Unsuccessfully canceled alert'})  
