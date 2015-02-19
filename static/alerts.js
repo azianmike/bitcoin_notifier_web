@@ -39,7 +39,7 @@ function parseData(temp){
     }
   }
 
-  var dataString = "Alert me via <span class=\"label label-primary\">"+alertType+"</span> when the price is <span class=\"label label-danger\">"+sign+" "+temp['priceThreshold'] +"</span> on <span class=\"label label-success\">"+temp['exchange']+"</span> every <span class=\"label label-warning\">" +timeSpan + " " + timeUnits+"</span> on <span class=\"label label-info\">";
+  var dataString = "Alert me via <span class=\"label label-primary\">"+alertType+"</span> when the price is <span class=\"label label-danger\">"+sign+" "+temp['priceThreshold'] +"</span> on <span class=\"label label-success\">"+temp['exchange']+"</span> every <span class=\"label label-warning\">" +timeSpan + " " + timeUnits+"</span>";
   return dataString;
 }
 
