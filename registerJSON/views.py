@@ -12,7 +12,7 @@ from re import match
 
 def checkValidEmail(email):
     pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
-    return bool(match(email, pattern))
+    return bool(match(pattern,email))
 
 
 def index(request):
