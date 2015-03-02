@@ -1,0 +1,26 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase //
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . //index.php [L]
+
+RewriteCond %{HTTP_REFERER} blackhatworth.com [NC,OR]
+RewriteCond %{HTTP_REFERER} bestwebsitesawards.com [NC,OR]
+RewriteCond %{HTTP_REFERER} hulfingtonpost.com [NC,OR]
+RewriteCond %{HTTP_REFERER} buttons-for-website.com [NC,OR]
+RewriteCond %{HTTP_REFERER} semalt.semalt.com [NC,OR]
+RewriteCond %{HTTP_REFERER} darodar.com [NC,OR]
+RewriteCond %{HTTP_REFERER} priceg.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ilovevitaly.co [NC,OR]
+RewriteCond %{HTTP_REFERER} make-money-online.7makemoneyonline.com [NC]
+RewriteCond %{HTTP_REFERER} forum.topic58631799.darodar.com [NC]
+RewriteCond %{HTTP_REFERER} semalt.semalt.com [NC]
+RewriteCond %{HTTP_REFERER} buttons-for-website.com [NC]
+RewriteCond %{HTTP_REFERER} o-o-6-o-o.com [NC]
+RewriteRule .* – [F]
+</IfModule>
+
+# END WordPress
