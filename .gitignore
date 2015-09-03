@@ -3,3 +3,4 @@
 *.pyc
 backgroundScripts/
 *UsernameAndPassword.py
+env/*
